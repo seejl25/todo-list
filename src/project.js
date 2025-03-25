@@ -15,6 +15,19 @@ function projectList() {
         addProj();
         e.preventDefault();
         addProjectDialog.close()
+        resetDialog()
+    })
+}
+
+function resetDialog() {
+    const allInputs = document.querySelectorAll("input");
+    allInputs.forEach(eachInput => {
+        if (eachInput.name === "project-name") {
+            eachInput.value = "";
+        }
+        else if (eachInput.name === "project-color") {
+            eachInput.value = "#ff0000";
+        }
     })
 }
 

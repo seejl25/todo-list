@@ -59,13 +59,13 @@ function sidebarMenu() {
     /*'projects' list */
     const project = document.createElement("div");
     project.classList.add("project");
-    const projectHeader = document.createElement("h1");
+    const projectHeader = document.createElement("h2");
     projectHeader.classList.add("project-header");
     projectHeader.textContent = "PROJECTS";
     project.appendChild(projectHeader)
     const addProjectBtn = document.createElement("button");
     addProjectBtn.classList.add("add-project-name");
-    addProjectBtn.innerHTML = '<i class="fa-regular fa-plus" style="color: #74C0FC;"></i>';
+    addProjectBtn.innerHTML = '<i class="fa-regular fa-plus" style="color: #071fcf;"></i>';
     project.appendChild(addProjectBtn);
     sidebarContent.appendChild(project)
 }

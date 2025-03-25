@@ -19,7 +19,11 @@
 
         </div>
     </div>
+    <div id="content">
+        
+    </div>
 
+    <!-- dialog form to add projects -->
     <dialog class="add-project-dialog">
         <p>
             <label for="project-name">
@@ -35,6 +39,36 @@
         </p>
         <button type="submit" class="add-project">Add</button>
         <button class="cancel-project">Cancel</button>
+    </dialog>
+
+    <!-- dialog form to add tasks -->
+    <dialog class="add-task-dialog">
+        <p>
+            <label for="task-title">
+                Title:
+                <input type="text" name="task-title" id="task-title" required/>
+            </label>
+        </p>
+        <p>
+            <label for="task-description">
+                Description:
+                <textarea name="task-description" id="task-description"></textarea>
+            </label>
+        </p>
+        <p>
+            <label for="due-date">
+                Due:
+                <input type="date" name="due-date" id="due-date">
+            </label>
+        </p>
+        <p>
+            <label for="priority">
+                High priority
+                <input type="checkbox" name="priority" id="priority" value="important">
+            </label>
+        </p>
+        <button type="submit" class="add-task">Add</button>
+        <button class="cancel-task">Cancel</button>
     </dialog>
 </body>
 </html>
