@@ -1,3 +1,4 @@
+import { displayAllProjs } from "./displayallprojects";
 function sidebarMenu() {
     const sidebarContent = document.querySelector(".sidebar-content");
 
@@ -67,7 +68,9 @@ function sidebarMenu() {
     addProjectBtn.classList.add("add-project-name");
     addProjectBtn.innerHTML = '<i class="fa-regular fa-plus" style="color: #071fcf;"></i>';
     project.appendChild(addProjectBtn);
-    sidebarContent.appendChild(project)
+    sidebarContent.appendChild(project);
+
+    displayAllProjs();
 }
 
 export {sidebarMenu}

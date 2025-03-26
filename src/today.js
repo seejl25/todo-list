@@ -6,10 +6,6 @@ function displayToday() {
     let currDate = getCurrDate()
     for (let i = 0; i < myTasks.length; i++) {
         const taskInfo = myTasks[i];
-        console.log(taskInfo.split(",").at(3) === currDate)
-        console.log(currDate)
-        console.log(taskInfo.split(",").at(3))
-        console.log(taskInfo.split(",").at(4))
         if (taskInfo.split(",").at(3) === currDate) {
             
             const projName = document.createElement("h1")
@@ -29,11 +25,11 @@ function displayToday() {
             const completed = document.createElement("button");
             completed.classList.add("completed");
             const priorityIcon = document.createElement("p")
-            if (taskInfo.split(",").at(4) === true) {  //Adding priority or not
+            if (taskInfo.split(",").at(4) === 'true') {  //Adding priority or not
                 priorityIcon.innerHTML = '<i class="fa-solid fa-exclamation" style="color: #ff0000;"></i>'
                 taskName.appendChild(priorityIcon);
             }
-            else if (taskInfo.split(",").at(4) === false) {
+            else if (taskInfo.split(",").at(4) === 'false') {
                 priorityIcon.innerHTML = '<i class="fa-solid fa-exclamation" style="color: #ffffff;"></i>'
                 taskName.appendChild(priorityIcon);
             }

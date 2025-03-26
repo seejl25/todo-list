@@ -1,5 +1,6 @@
 import { addTask } from "./addtask";
-import { displayTask } from "./displaytask";
+import { displayAllTasks } from "./displayall"; 
+import { addProjToArr } from "./localstorage";
 function addProj() {
 
     /*Adding in list of projects */
@@ -20,6 +21,7 @@ function addProj() {
     colorDiv.style.backgroundColor = `${projColor.value}`;
     colorDiv.style.width = "2rem";
     colorDiv.style.height = "1.5rem";
+    
 
     const delProjBtn = document.createElement("button");
     delProjBtn.classList.add("del-proj-button");
@@ -30,6 +32,8 @@ function addProj() {
         projContainer.appendChild(projBtn);
         projContainer.appendChild(delProjBtn);
         sidebarContent.appendChild(projContainer);
+        localStorage.setItem("project list", `${projBtn.textContent},${projColor.value}`)  
+        addProjToArr()
     }
 
     /*Deleting individual projects */
@@ -54,8 +58,9 @@ function addProj() {
         contentHeader.appendChild(projectTitle);
         contentHeader.appendChild(addTaskBtn);
         mainContent.appendChild(contentHeader);
-        localStorage.setItem("Project Name", projBtn.textContent)       
-
+        localStorage.setItem("Project Name", projBtn.textContent)  
+           
+        displayAllTasks();
     })
     addTaskBtn.addEventListener("click", () => {
         addTask();
