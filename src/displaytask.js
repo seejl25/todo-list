@@ -28,7 +28,7 @@ function displayTask() {
         taskName.classList.add("task-name");
         // const taskInfo = myTasks.at(-1);
         // for (let i = 0; i < myTasks.length; i++) {
-            const taskInfo = localStorage.getItem(`Task ${myTasks.length-1}`);
+            let taskInfo = localStorage.getItem(`Task ${myTasks.length-1}`);
             if (taskInfo.split(",").at(0) === projectTitle.textContent) {
                 
                 const title = document.createElement("h2");
@@ -80,7 +80,20 @@ function displayTask() {
                 }) 
                 
                 delTask.addEventListener("click", () => {
-                    content.removeChild(contentContainer);
+                    let i = 0;
+                    while (localStorage.getItem(`Task ${i}`)) {
+                        let taskDetails = localStorage.getItem(`Task ${i}`);
+
+                        if (taskDetails === taskInfo) {
+                            localStorage.removeItem(`Task ${i}`);
+                        }
+                        else {
+                            taskInfo = localStorage.getItem(`Task ${myTasks.length-1-(i+1)}`)
+                        }
+                        i++
+                    }
+                    // localStorage.removeItem(`Task ${myTasks.length-1}`);
+                    contentContainer.removeChild(taskHeading);
                 })
                 
                 completed.addEventListener("click", () => {

@@ -24,7 +24,6 @@ function addTasksToArr() {
     const priority = localStorage.getItem("Priority");
     let newTask = new AllTasks(projectName, taskName, taskDesc, dueDate, priority);
     myTasks.push(newTask.info())
-    console.log(myTasks)
     updateTaskStorage(myTasks)
 }
 
@@ -56,7 +55,6 @@ function addProjToArr() {
     const projColor = projList.split(",").at(1);
     let newProj = new AllProjs(projName, projColor);
     myProjects.push(newProj.info())
-    console.log(myProjects)
     updateProjStorage(myProjects)
 }
 
@@ -67,3 +65,7 @@ function updateProjStorage(projArr) {
 }
 
 export {addProjToArr}
+
+function addTasksToStorage(data) {
+    
+}

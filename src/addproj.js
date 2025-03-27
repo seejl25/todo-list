@@ -38,6 +38,17 @@ function addProj() {
 
     /*Deleting individual projects */
     delProjBtn.addEventListener("click", () => {
+        let i = 0;
+        while (localStorage.getItem(`Project ${i}`)) {
+            const projDetails = localStorage.getItem(`Project ${i}`);
+
+            if (projDetails.split(",").at(0) === projBtn.textContent) {
+                localStorage.removeItem(`Project ${i}`);
+            }
+            i++
+          }
+        // console.log(localStorage.getItem("Project ").split(",").at(0));
+        // console.log(projBtn.textContent)
         sidebarContent.removeChild(projContainer);
     })
 
@@ -59,7 +70,7 @@ function addProj() {
         contentHeader.appendChild(addTaskBtn);
         mainContent.appendChild(contentHeader);
         localStorage.setItem("Project Name", projBtn.textContent)  
-           
+        console.log("clicked")
         displayAllTasks();
     })
     addTaskBtn.addEventListener("click", () => {

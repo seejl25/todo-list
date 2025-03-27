@@ -1,16 +1,18 @@
-import { myProjects } from "./localstorage";
+import { displayAllTasks } from "./displayall";
+import { addTask } from "./addtask";
 function displayAllProjs() {
     const sidebarContent = document.querySelector(".sidebar-content");
 
-    for (let i = 0; i < myProjects.length; i++) {
-        if (localStorage.getItem(`Project ${i}`)) {
+    let i = 0;
+    while (localStorage.getItem(`Project ${i}`)){
+        
             const projInfo = localStorage.getItem(`Project ${i}`)
             const projContainer = document.createElement("div");
             projContainer.classList.add("project-container");
             const projBtn = document.createElement("button");
             projBtn.classList.add("projects");
             projBtn.textContent = projInfo.split(",").at(0);
-            console.log(projInfo.split(",").at(0))
+            
 
             const colorDiv = document.createElement("div");
             colorDiv.classList.add("color-div");
@@ -32,6 +34,15 @@ function displayAllProjs() {
 
             /*Deleting individual projects */
             delProjBtn.addEventListener("click", () => {
+                let i = 0;
+                while (localStorage.getItem(`Project ${i}`)) {
+                    const projDetails = localStorage.getItem(`Project ${i}`);
+
+                    if (projDetails.split(",").at(0) === projBtn.textContent) {
+                        localStorage.removeItem(`Project ${i}`);
+                    }
+                    i++
+                }
                 sidebarContent.removeChild(projContainer);
             })
 
@@ -52,13 +63,12 @@ function displayAllProjs() {
                 contentHeader.appendChild(projectTitle);
                 contentHeader.appendChild(addTaskBtn);
                 mainContent.appendChild(contentHeader);
-           
                 displayAllTasks();
             })
             addTaskBtn.addEventListener("click", () => {
                 addTask();
             })
-        }
+        i++
     }
     
 }

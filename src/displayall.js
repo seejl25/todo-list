@@ -1,4 +1,3 @@
-import { myTasks } from "./localstorage";
 function displayAllTasks() {
     const content = document.querySelector("#content")
     const projectTitle = document.querySelector(".project-title")
@@ -8,11 +7,10 @@ function displayAllTasks() {
 
 
         // const taskInfo = myTasks.at(-1);
-        for (let i = 0; i < myTasks.length; i++) {
+        let i = 0;
 
-            if (localStorage.getItem(`Task ${i}`)) {
-                
-                const taskInfo = localStorage.getItem(`Task ${i}`);
+            while (localStorage.getItem(`Task ${i}`)) {
+                let taskInfo = localStorage.getItem(`Task ${i}`);
                 if (taskInfo.split(",").at(0) === projectTitle.textContent) {
                     const taskHeading = document.createElement("div");
                     taskHeading.classList.add("task-heading");
@@ -68,7 +66,22 @@ function displayAllTasks() {
                     }) 
                     
                     delTask.addEventListener("click", () => {
-                        content.removeChild(contentContainer);
+                        console.log(i)
+                        let j = 0;
+                        let taskInformation = localStorage.getItem(`Task ${i-1}`);
+                        while (localStorage.getItem(`Task ${j}`)) {
+                            let taskDetails = localStorage.getItem(`Task ${j}`);
+                            console.log(taskDetails)
+                            console.log(taskInformation)
+                            if (taskDetails === taskInformation) {
+                                localStorage.removeItem(`Task ${j}`);
+                            }
+                            else {
+                                taskInformation = localStorage.getItem(`Task ${i-1-(j+1)}`)
+                            }
+                            j++
+                        }
+                        contentContainer.removeChild(taskHeading);
                     })
                     
                     completed.addEventListener("click", () => {
@@ -77,8 +90,9 @@ function displayAllTasks() {
                         contentContainer.style.color = "rgb(194, 193, 193)"
                     })
                 }
+                i++
             }
-        }
+        
 }
 
 export {displayAllTasks}
