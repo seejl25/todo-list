@@ -27,3 +27,5 @@ What I learnt:
 Next steps:
 - More work needs to be done with regards to the styling
 - Adding more tabs to the sidebar such as a "Today" tab for tasks due today, "Importance" tab for tasks that are high priority and "Overdue" tab for tasks that are overdued
+- Made it responsive to phone and tablets
+- Sign in/ create account function
