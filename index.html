@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do list</title>
+    <link rel="stylesheet" href="84bb4fc080631c2605f1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script defer src="main.js"></script></head>
+<body>
+    <div class="sidebar">
+        <div class="user">
+            <i class="fa-regular fa-user"></i>
+        </div>
+        <div class="sidebar-menu">
+            <button class="menu-button" type="button"><i class="fa-solid fa-bars"></i></button>
+        </div>
+        <div class="sidebar-content">
+
+        </div>
+    </div>
+    <div id="content">
+        
+    </div>
+
+    <!-- dialog form to add username -->
+     <dialog id="userInfo">
+        <p>
+            <label for="email">
+                Email:
+                <input type="email" name="email" id="email" required />
+            </label>
+        </p>
+        <p>
+            <label for="username">
+                Username:
+                <input type="text" name="username" id="username">
+            </label>
+        </p>
+        <p>
+            <label for="password">
+                Password:
+                <input type="password" name="password" id="password">
+            </label>
+        </p>
+        <button type="submit" class="add-user">Add</button>
+        <button class="cancel-user">Cancel</button>
+     </dialog>
+
+    <!-- dialog form to add projects -->
+    <dialog class="add-project-dialog">
+        <p>
+            <label for="project-name">
+                Project Name:
+                <input type="text" name="project-name" id="project-name" required/>
+            </label>
+        </p>
+        <p>
+            <label for="project-color">
+                Label:
+                <input type="color" name="project-color" id="project-color" value="#ff0000">
+            </label>
+        </p>
+        <button type="submit" class="add-project">Add</button>
+        <button class="cancel-project">Cancel</button>
+    </dialog>
+
+    <!-- dialog form to add tasks -->
+    <dialog class="add-task-dialog">
+        <p>
+            <label for="task-title">
+                Title:
+                <input type="text" name="task-title" id="task-title" required/>
+            </label>
+        </p>
+        <p>
+            <label for="task-description">
+                Description:
+                <textarea name="task-description" id="task-description"></textarea>
+            </label>
+        </p>
+        <p>
+            <label for="due-date">
+                Due:
+                <input type="date" name="due-date" id="due-date">
+            </label>
+        </p>
+        <p>
+            <label for="priority">
+                High priority
+                <input type="checkbox" name="priority" id="priority" value="important">
+            </label>
+        </p>
+        <button type="submit" class="add-task">Add</button>
+        <button class="cancel-task">Cancel</button>
+    </dialog>
+</body>
+</html>
