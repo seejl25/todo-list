@@ -1,10 +1,11 @@
 function sidebarMenu() {
     const sidebarContent = document.querySelector(".sidebar-content");
 
+    /* Allow users to sign in and their username will show up here */ 
     const user = document.querySelector(".user");
     const userName = document.createElement("a");
     userName.classList.add("username");
-    userName.setAttribute("href", "#");
+    userName.setAttribute("href", "#userInfo");
     userName.textContent = "Sign in";
     user.appendChild(userName);
 
@@ -56,7 +57,7 @@ function sidebarMenu() {
     // overdue.appendChild(overdueTitle);
     // sidebarContent.appendChild(overdue);
 
-    /*'projects' list */
+    /* projects that are displayed after creating */
     const project = document.createElement("div");
     project.classList.add("project");
     const projectHeader = document.createElement("h2");

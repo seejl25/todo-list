@@ -3,7 +3,7 @@ import { displayAllTasks } from "./displayall";
 import { addProjToArr } from "./localstorage";
 function addProj() {
 
-    /*Adding in list of projects */
+    /*Adding in list of projects based on values obtain from the dialog */
     const sidebarContent = document.querySelector(".sidebar-content");
 
     const projContainer = document.createElement("div");
@@ -36,7 +36,7 @@ function addProj() {
         addProjToArr()
     }
 
-    /*Deleting individual projects */
+    /* Deleting individual projects */
     delProjBtn.addEventListener("click", () => {
         let i = 0;
         while (localStorage.getItem(`Project ${i}`)) {
@@ -47,12 +47,10 @@ function addProj() {
             }
             i++
           }
-        // console.log(localStorage.getItem("Project ").split(",").at(0));
-        // console.log(projBtn.textContent)
         sidebarContent.removeChild(projContainer);
     })
 
-    /*displaying content */
+    /* displaying title of project and a + icon on the heading for the content field */
     const mainContent = document.querySelector('#content');
     const contentHeader = document.createElement("div");    //header div for project title and add task icon
     contentHeader.classList.add("content-header");
@@ -70,7 +68,6 @@ function addProj() {
         contentHeader.appendChild(addTaskBtn);
         mainContent.appendChild(contentHeader);
         localStorage.setItem("Project Name", projBtn.textContent)  
-        console.log("clicked")
         displayAllTasks();
     })
     addTaskBtn.addEventListener("click", () => {

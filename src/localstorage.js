@@ -1,18 +1,19 @@
-/* for displaying TASKS */
+/* for storing of TASKS */
 export const myTasks = []
 
 
 class AllTasks {
-    constructor(project, name, descript, due, priority) {
+    constructor(project, name, descript, due, priority, id) {
         this.project = project;
         this.name = name;
         this.descript = descript;
         this.due = due;
         this.priority = priority;
+        this.id = id
     }
 
     info() {
-        return `${this.project},${this.name},${this.descript},${this.due},${this.priority}`
+        return `${this.project},${this.name},${this.descript},${this.due},${this.priority},${this.id}`
     }
 }
 
@@ -22,7 +23,8 @@ function addTasksToArr() {
     const taskDesc = localStorage.getItem("Task Description");
     const dueDate = localStorage.getItem("Due Date");
     const priority = localStorage.getItem("Priority");
-    let newTask = new AllTasks(projectName, taskName, taskDesc, dueDate, priority);
+    const taskId = localStorage.getItem("Task id")
+    let newTask = new AllTasks(projectName, taskName, taskDesc, dueDate, priority, taskId);
     myTasks.push(newTask.info())
     updateTaskStorage(myTasks)
 }
@@ -35,7 +37,7 @@ function updateTaskStorage(taskArr) {
 
 export {addTasksToArr}
 
-/* for displaying PROJECTS */
+/* for storing of PROJECTS */
 export const myProjects = [];
 
 class AllProjs{
@@ -66,6 +68,3 @@ function updateProjStorage(projArr) {
 
 export {addProjToArr}
 
-function addTasksToStorage(data) {
-    
-}

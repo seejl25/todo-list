@@ -1,20 +1,26 @@
+/* Displays all tasks from local storage even after page have been refreshed */
 function displayAllTasks() {
     const content = document.querySelector("#content")
     const projectTitle = document.querySelector(".project-title")
 
     const contentContainer = document.createElement("div");
     contentContainer.classList.add("content-container");
-
-
-        // const taskInfo = myTasks.at(-1);
         let i = 0;
 
-            while (localStorage.getItem(`Task ${i}`)) {
+            while (Object.keys(localStorage).includes(`Task ${i}`) || Object.keys(localStorage).includes(`Task ${i+1}`) || Object.keys(localStorage).includes(`Task ${i+2}`)) {
+                if (!Object.keys(localStorage).includes(`Task ${i}`)) {
+                    i++;
+                    continue;
+                }
+                // if (!Object.keys(localStorage).includes(`Task ${i+1}`)) {
+                //     i += 2;
+                //     continue;
+                // }
                 let taskInfo = localStorage.getItem(`Task ${i}`);
                 if (taskInfo.split(",").at(0) === projectTitle.textContent) {
                     const taskHeading = document.createElement("div");
                     taskHeading.classList.add("task-heading");
-            
+                    taskHeading.dataset.taskId = taskInfo.split(",").at(5)
                     const taskName = document.createElement("div");
                     taskName.classList.add("task-name");
                     const title = document.createElement("h2");
@@ -57,27 +63,23 @@ function displayAllTasks() {
                             const description = document.createElement("p");
                             description.classList.add("description");
                             description.textContent = `Description: ${taskInfo.split(",").at(2)}`;  //description
-                            contentContainer.appendChild(description);
+                            taskHeading.appendChild(description);
                             moreInfo.innerHTML ='<i class="fa-solid fa-chevron-up"></i>';
                         } else if (moreInfo.innerHTML === '<i class="fa-solid fa-chevron-up"></i>') {
-                            contentContainer.removeChild(contentContainer.lastChild)
+                            taskHeading.removeChild(taskHeading.lastChild)
                             moreInfo.innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
                         }
                     }) 
                     
                     delTask.addEventListener("click", () => {
-                        console.log(i)
+                        const taskId = taskHeading.dataset.taskId
                         let j = 0;
-                        let taskInformation = localStorage.getItem(`Task ${i-1}`);
                         while (localStorage.getItem(`Task ${j}`)) {
                             let taskDetails = localStorage.getItem(`Task ${j}`);
-                            console.log(taskDetails)
-                            console.log(taskInformation)
-                            if (taskDetails === taskInformation) {
+
+                            if (taskDetails.split(",").at(5) === taskId) {
                                 localStorage.removeItem(`Task ${j}`);
-                            }
-                            else {
-                                taskInformation = localStorage.getItem(`Task ${i-1-(j+1)}`)
+                                break
                             }
                             j++
                         }
@@ -86,8 +88,8 @@ function displayAllTasks() {
                     
                     completed.addEventListener("click", () => {
                         completed.style.backgroundColor = "#88e788";
-                        contentContainer.style.textDecoration = "line-through";
-                        contentContainer.style.color = "rgb(194, 193, 193)"
+                        taskHeading.style.textDecoration = "line-through";
+                        taskHeading.style.color = "rgb(194, 193, 193)"
                     })
                 }
                 i++

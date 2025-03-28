@@ -1,5 +1,6 @@
 import { addProj } from "./addproj";
 
+/* Displays the dialog for users to add in their projects by inputting the name and color label */
 function projectList() {
     const addProjectDialog = document.querySelector('.add-project-dialog');
     addProjectDialog.showModal()

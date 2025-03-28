@@ -1,4 +1,6 @@
 import { displayTask } from "./displaytask";
+
+/* Displays the dialog for users to add in the tasks for each project */
 function addTask() {
     const addTaskDialog = document.querySelector(".add-task-dialog");
     resetTaskDialog()

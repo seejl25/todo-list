@@ -1,5 +1,8 @@
 import { displayAllTasks } from "./displayall";
 import { addTask } from "./addtask";
+
+/* Function is used when the webpage is refreshed. This function allows local storage data to be retrieved
+    to display all the saved projects */
 function displayAllProjs() {
     const sidebarContent = document.querySelector(".sidebar-content");
 
