@@ -6,7 +6,7 @@ function sidebarMenu() {
     const userName = document.createElement("a");
     userName.classList.add("username");
     userName.setAttribute("href", "#userInfo");
-    userName.textContent = "Sign in";
+    userName.textContent = "Sign In";
     user.appendChild(userName);
 
     // /*'today' tab */
