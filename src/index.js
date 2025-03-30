@@ -21,11 +21,15 @@ menuBtn.addEventListener("click", () => {
     sidebarMenu();
     displayAllProjs();
     const userName = document.querySelector(".username");   //Adding username automatically 
-    userName.textContent = localStorage.getItem("username");
-    userName.style.textDecoration = "none";
-    userName.style.pointerEvents = "none";
-    userName.style.color = "black";
-    userName.style.fontSize = "1.5rem";
+    if (localStorage.getItem("username")) {
+        userName.textContent = localStorage.getItem("username");
+        userName.style.textDecoration = "none";
+        userName.style.pointerEvents = "none";
+        userName.style.color = "black";
+        userName.style.fontSize = "1.5rem";
+    } else {
+        userName.textContent = "Sign In";
+    }
     
     /* On the sidebar, there is a + icon. Clicking on the + icon will allow users to add in their own projects */
     const addProjBtn = document.querySelector(".add-project-name");
