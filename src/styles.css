@@ -25,9 +25,14 @@ i {
 button {
     background-color: gray;
     border: none;
-    padding: 0;
+    padding: 0.2rem;
     font-size: 1.2rem;
     z-index: 1;
+    cursor: pointer;
+}
+
+.user {
+    padding-left: 0.2rem;
 }
 
 .menu-tabs {
@@ -36,9 +41,24 @@ button {
     gap: 1.5rem;
 }
 
+
+.menu-button:hover {
+    background-color: rgb(189, 188, 188);
+    border-radius: 20%;
+    box-shadow: 2px 2px 2px black;
+    cursor: pointer;
+}
+
 .project {
     display: flex;
     justify-content: space-between;
+}
+
+.projects:hover {
+    background-color: rgb(189, 188, 188);
+    border-radius: 8px;
+    box-shadow: 2px 2px 2px black;
+    cursor: pointer;
 }
 
 .project-container {
